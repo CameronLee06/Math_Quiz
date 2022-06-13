@@ -5,7 +5,7 @@ print()
 
 # checks user input is valid based on a list
 def choice_checker(question, valid_list, error):
-
+    print(question)
     error = "Please choose from easy / medium / hard (or xxx to quit)"
 
     valid = False
