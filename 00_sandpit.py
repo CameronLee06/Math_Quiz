@@ -1,10 +1,13 @@
-ask_name = input("what is your name?")
+import random
 
-try:
-    ask_number = int(input("number"))    # replace with integer checker when integrating
-except ValueError:
-    print("you did not enter a number")
-    ask_number = ""
+number_one = random.randint(1,20)
+number_two = random.randint(1,20)
 
-print("hello {}, your favourite integer is {}".format(ask_name, ask_number))
-print("hello {}, your favourite integer is {}".format(ask_number, ask_name))
+question = "what is {} + {}?".format(number_one, number_two)
+ask = input(question)
+answer = 
+
+if ask == answer:
+    print("Congrats, you got it correct, next question: ")
+else:
+    print("Unlucky, you got in incorrect, next question: ")

@@ -67,15 +67,33 @@ show_instructions = yes_no("would you like to see the instructions?")
 if show_instructions == "yes":
     instructions()
 
+choose_difficulty = ("Press <E> for Easy, <M> for Medium or <H> for Hard")
+easy_mode = 0
+medium_mode = 0
+hard_mode = 0
 
-mode_difficulty = ("Easy, Medium, Hard") 
-input("What difficulty would you like to play?").format(mode_difficulty)
-mode_difficulty = yes_no(mode_difficulty)
+# ask user what difficulty they would like to play on, then let them choose
 
-if mode_difficulty =="easy":
-    print("program continues")
+print()
+print("What difficulty would you want to play on?")
+print()
 
-    
+choose = input("{} or 'xxx' to end. !(capital sensitive)!:".format(choose_difficulty))
 
+print()
+print("You chose {}".format(choose))
+print()
 
+if choose == "E":
+    print("you chose to play on easy difficulty")
+
+elif choose == "M":
+    print("you are now playing on medium difficulty")
+
+elif choose == "H":
+    print("you are now playing on hard difficulty")
+
+print()
+print("Question 1:")
+print()
 
