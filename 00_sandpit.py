@@ -1,13 +1,15 @@
-import random
+import random 
+import math
 
-number_one = random.randint(1,20)
-number_two = random.randint(1,20)
 
-question = "what is {} + {}?".format(number_one, number_two)
-ask = input(question)
-answer = 
+end = False
+questions_asked = 0
+correct_questions = 0
 
-if ask == answer:
-    print("Congrats, you got it correct, next question: ")
-else:
-    print("Unlucky, you got in incorrect, next question: ")
+while end == False:
+    if questions_asked <= 10 | questions_asked >=10:
+        choice = random.choice("+-")
+        number_one = random.randint(1,20)
+        number_two = random.randint(1,20)
+        print(number_one, choice, number_two)
+        answer = int(input("please answer the question"))
