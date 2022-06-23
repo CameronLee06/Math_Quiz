@@ -15,8 +15,15 @@ while end == False:
         print(number_one, choice, number_two)
         answer = int(input("please answer the question"))
 
-    if choice == "+-":
+    if choice == "+":
         actual_answer = number_one + number_two
-        #print(actual_answer)
-        print ("congrats, you got it")
+        if answer == actual_answer:
+            print ("congrats, you got it")
     
+    elif choice == "-":
+        actual_answer = number_one - number_two
+        if answer == actual_answer:
+            print ("congrats, you got it")
+
+        else: 
+            print ("sorry, you got it wrong")
