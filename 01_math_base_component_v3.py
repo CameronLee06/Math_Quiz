@@ -1,6 +1,25 @@
 import random
 import math
 
+
+def getValue():
+    userInput = ''
+    try:
+        userInput = int(input())
+    except ValueError:
+        return "retry"
+    else:
+        return userInput
+
+userEntry = getValue()
+
+while userEntry == 'retry':
+    print("You entered a letter. Please put in a number.")
+    userEntry = getValue()
+
+print("You entered:",userEntry)
+
+
 # yes no checker, make sure anything but "yes" "y" "n" or "no" is entered to continue
 def yes_no(question):
 
@@ -19,29 +38,6 @@ def yes_no(question):
         else:
             print("Please answer yes / no")
 
-# checks user input is valid based on a list
-def choice_checker(question, valid_list, error):
-    print(question)
-    error = "Please choose from easy / medium / hard (or xxx to quit)"
-
-    valid = False
-    while not valid:
-
-        # Ask user for choice (and put choice in lowercase)
-        response = input(question).lower()
-
-
-        # Iterates through list and if response is an item
-        # in the list (or the first letter of an item), the 
-        # full item name is returned
-
-        for item in valid_list:
-            if response == item[0] or response == item:
-                return item
-
-        # output error if item not in list
-        print(error)
-        print()
 
 # ask user if they would like to see the instructions or go straight to game
 
@@ -114,37 +110,10 @@ show_instructions = yes_no("would you like to see the instructions?")
 if show_instructions == "yes":
     instructions()
 
-choose_difficulty = ("Press <E> for Easy, <M> for Medium or <H> for Hard")
-easy_mode = 0
-medium_mode = 0
-hard_mode = 0
-
-# ask user what difficulty they would like to play on, then let them choose
-
-print()
-print("What difficulty would you want to play on?")
+# Ask user for # of rounds..
+rounds = intcheck("How many questions would you like to be asked?", 1, )
 print()
 
-choose = input("{} or 'xxx' to end.".format(choose_difficulty))
-
-print()
-print("You chose {}".format(choose))
-print()
-
-# ask user how many questions they would like to have asked
-amount_of_questions = intcheck("How many questions would you like to be asked?", 1, exit_code = "")
-
-# asks user what difficulty they would like to play on
-if choose == "E":
-    print("you chose to play on easy difficulty")
-
-elif choose == "M":
-    print("you are now playing on medium difficulty")
-
-elif choose == "H":
-    print("you are now playing on hard difficulty")
-
-print()
 print("Question 1:")
 print()
 
@@ -181,29 +150,3 @@ while end == False:
 
         else: 
             print ("sorry, you got it wrong")
-
-
-end = False
-questions_asked = 0
-correct_questions = 0
-incorrect_questions = 0
-
-# generates a random number and question for user to attempt
-while end == False:
-    if questions_asked <= 10 | questions_asked >=10:
-        choice = random.choice("*")
-        number_one = random.randint(1,10)
-        number_two = random.randint(1,10)
-        print(number_one, choice, number_two)
-        answer = int(input("please answer the question"))
-
-# checks if user got the addition question correct or not
-    if choice == "*":
-        actual_answer = number_one * number_two
-        if answer == actual_answer:
-            print ("congrats, you got it")
-            correct_answers = 1
-
-        else:
-            print ("Sorry you got it wrong")
-    
