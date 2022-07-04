@@ -84,7 +84,12 @@ def intcheck(question, low=None, high=None, exit_code = None):
 
 
 # ***** Main Routine *****
-
+end = False
+questions_asked = 0
+correct_questions = 0
+questions_incorrect = 0
+questions = 0
+end_game = ""
 game_summary = []
 
 print("Welcome to the Ultimate Math Quiz!")
@@ -96,18 +101,22 @@ show_instructions = yes_no("would you like to see the instructions?")
 if show_instructions == "yes":
     instructions()
 
-# Ask user for # of rounds..
-questions_asked = intcheck("How many questions would you like to be asked?", 1)
+questions_asked = intcheck("How many rounds: ", 1)
+
 print()
 
-end = False
-questions_asked = 0
-correct_questions = 0
-incorrect_questions = 0
+end_game = "no"
+while questions_asked < questions and end_game == "no":
+    
+    questions_asked+= 1
+    print("heading")
+    input()
+
+print()
+print ("Question {} of {}")
 
 # generates a random number and question for user to attempt
-end_game = ""
-while end_game == False:
+while end == False:
     if questions_asked <= 10 | questions_asked >=10:
         choice = random.choice("+-")
         number_one = random.randint(1,20)
@@ -135,10 +144,6 @@ while end_game == False:
         else: 
             print ("sorry, you got it wrong")
 
-questions_incorrect = 0
-questions_correct = 0
-questions_asked = 0
-
 feedback = "sorry you lose"
 questions_incorrect += 1
 
@@ -152,7 +157,6 @@ questions_correct = questions_asked - questions_incorrect
 # **** Calculate Game Stats ******
 percent_win = questions_correct / questions_asked * 100
 percent_lose = questions_incorrect / questions_asked * 100
-
 
 print()
 print ("***** Game History *****")
