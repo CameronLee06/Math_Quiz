@@ -91,24 +91,80 @@ def intcheck(question, low=None, high=None, exit_code = None):
 questions_asked = 0 
 questions_incorrect = 0
 correct_questions = 0
+end = False
+
+print("Welcome to the Ultimate Math Quiz!")
+print()
+
+show_instructions = yes_no("would you like to see the instructions?") 
+
+# if user says "yes" to wanting to see instructions, display instructions 
+if show_instructions == "yes":
+    instructions()
 
 questions_wanted = intcheck("How many questions do you want: ", 1)
 
 quiz_summary = []
 
-print("Welcome to the Ultimate Math Quiz!")
-print()
-
-
 end_quiz = "no"
 while questions_asked < questions_wanted and end_quiz == "no":
     
     questions_asked += 1
-    print("heading")
-    input()
+    
+    # generates a random number and question for user to attempt
 
+    if questions_asked <= 10 | questions_asked >=10:
+        choice = random.choice("+-")
+        number_one = random.randint(1,20)
+        number_two = random.randint(1,20)
+        print(number_one, choice, number_two)
+        answer = int(input("Please answer the question"))
 
+# checks if user got the addition question correct or not
+    if choice == "+":
+        actual_answer = number_one + number_two
+        if answer == actual_answer:
+            print ("")
+            feedback = "!!!You got it correct!!!"
+            correct_answers = 1
 
+        else:
+            print ("^^^Sorry you got it wrong^^^")
+            questions_incorrect += 1
+            
+# checks if user got the subtraction question correct or not    
+    elif choice == "-":
+        actual_answer = number_one - number_two
+        if answer == actual_answer:
+            print ("")
+            feedback = "!!!You got it correct!!!"
+            correct_answers = 1
+
+        else: 
+            print ("")
+
+            feedback = "^^^You got it incorrect^^^"
+            questions_incorrect += 1
+
+    outcome = "Round {}: {}".format(questions_asked, feedback)
+    print(feedback)
+    print()
+    quiz_summary.append(outcome)
+
+    questions_correct = questions_asked - questions_incorrect
+
+# **** Calculate Game Stats ******
+percent_win = questions_correct / questions_asked * 100
+percent_lose = questions_incorrect / questions_asked * 100
 
 print()
-print ("we are done")
+print ("***** Game History *****")
+for game in quiz_summary:
+    print(game)
+
+print()
+# displays game stats with % values to the nearest whole number
+print("******* Game Statistics *******")
+print ("Win {}, ({:.0f}%) \nLoss: {}, " "({:.0f}%)".format(questions_correct,percent_win,questions_incorrect,percent_lose))
+
+print("Thank you for playing")

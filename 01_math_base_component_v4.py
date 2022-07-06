@@ -29,9 +29,8 @@ def instructions():
         """
     **** How To Play****
 
-    You will start by choosing a difficulty (Easy, Medium, Hard).
-
-    Then you will be randomly asked 10 different question that are never the same.
+    You will be randomly asked different questions and you can
+    choose to be asked between 1 and 10 that are never the same.
 
     You will then attempt to answer each question and see how many you get correct.
 
@@ -90,7 +89,7 @@ correct_questions = 0
 questions_incorrect = 0
 questions = 0
 end_game = ""
-game_summary = []
+quiz_summary = []
 
 print("Welcome to the Ultimate Math Quiz!")
 print()
@@ -150,7 +149,7 @@ questions_incorrect += 1
 outcome = "Round {}: {}".format(questions_asked, feedback)
 print(feedback)
 print()
-game_summary.append(outcome)
+quiz_summary.append(outcome)
 
 questions_correct = questions_asked - questions_incorrect
 
@@ -160,7 +159,7 @@ percent_lose = questions_incorrect / questions_asked * 100
 
 print()
 print ("***** Game History *****")
-for game in game_summary:
+for game in quiz_summary:
     print(game)
 
 print()
