@@ -2,6 +2,7 @@
 import random
 import math
 
+# checks for yes/no
 def yes_no(question):
 
     valid = False
@@ -21,7 +22,7 @@ def yes_no(question):
             print("Please answer yes / no")
 
 
-
+#asks user if they want to see the instructions
 def instructions():
     print(
         """
@@ -102,7 +103,7 @@ show_instructions = yes_no("would you like to see the instructions?")
 if show_instructions == "yes":
     instructions()
 
-questions_wanted = intcheck("How many questions do you want: ", 1)
+questions_wanted = intcheck("How many questions do you want to be asked?: ", 1)
 
 quiz_summary = []
 
@@ -118,7 +119,7 @@ while questions_asked < questions_wanted and end_quiz == "no":
         number_one = random.randint(1,20)
         number_two = random.randint(1,20)
         print(number_one, choice, number_two)
-        answer = int(input("Please answer the question"))
+        answer = intcheck("Please answer the question with a number")
 
 # checks if user got the addition question correct or not
     if choice == "+":
@@ -126,10 +127,11 @@ while questions_asked < questions_wanted and end_quiz == "no":
         if answer == actual_answer:
             print ("")
             feedback = "!!!You got it correct!!!"
-            correct_answers = 1
+            correct_questions += 1
 
         else:
-            print ("^^^Sorry you got it wrong^^^")
+            print ("")
+            feedback = ("^^^You got it incorrect^^^") 
             questions_incorrect += 1
             
 # checks if user got the subtraction question correct or not    
@@ -138,11 +140,10 @@ while questions_asked < questions_wanted and end_quiz == "no":
         if answer == actual_answer:
             print ("")
             feedback = "!!!You got it correct!!!"
-            correct_answers = 1
+            correct_questions += 1
 
         else: 
             print ("")
-
             feedback = "^^^You got it incorrect^^^"
             questions_incorrect += 1
 
